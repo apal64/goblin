@@ -2,5 +2,3 @@
 ########variables
 
 $date = (get-Date).tostring() $week = (Get-Date).AddDays(-7) write-Host "Getting users created within a week." $ADuserInWeek = Get-ADUser -Filter 'name -notlike "test"' -Properties * -Searchbase “ou=,dc=“ | where { $_.whenCreated -ge $week } | select Name,whenCreated,UserPrincipalName,office,employeeid
-Search AD for computers created in the last week (populate ou&dc)
-variables
