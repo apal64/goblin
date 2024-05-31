@@ -1,0 +1,36 @@
+<#
+  .SYNOPSIS
+  PUT SHORT SCRIPT DESCRIPTION HERE AND ADD ANY ADDITIONAL KEYWORD SECTIONS AS NEEDED (.PARAMETER, .EXAMPLE, ETC.).
+#>
+[CmdletBinding()]
+param (
+  # PUT PARAMETER DEFINITIONS HERE AND DELETE THIS COMMENT.
+)
+
+process {
+  # PUT SCRIPT CODE HERE AND DELETE THIS COMMENT.
+}
+
+begin {
+  # DEFINE FUNCTIONS HERE AND DELETE THIS COMMENT.
+
+  $InformationPreference = 'Continue'
+  # $VerbosePreference = 'Continue' # Uncomment this line if you want to see verbose messages.
+
+  # Log all script output to a file for easy reference later if needed.
+  [string] $lastRunLogFilePath = "$PSCommandPath.LastRun.log"
+  Start-Transcript -Path $lastRunLogFilePath
+
+  # Display the time that this script started running.
+  [DateTime] $startTime = Get-Date
+  Write-Information "Starting script at '$($startTime.ToString('u'))'."
+}
+
+end {
+  # Display the time that this script finished running, and how long it took to run.
+  [DateTime] $finishTime = Get-Date
+  [TimeSpan] $elapsedTime = $finishTime - $startTime
+  Write-Information "Finished script at '$($finishTime.ToString('u'))'. Took '$elapsedTime' to run."
+
+  Stop-Transcript
+}
